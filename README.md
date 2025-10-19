@@ -3,6 +3,8 @@
  
  Ubuntu 20.04, RTX 3070 GPU 1개 - 최종 점수 **49.78 (Rank 5)**
 
+<img width="638" height="1219" alt="image" src="https://github.com/user-attachments/assets/b83dab63-dfcf-4d4a-afb3-37ece445d6f9" />
+
 <br />
 
 ## 주요 특징
