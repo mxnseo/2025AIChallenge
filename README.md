@@ -3,6 +3,7 @@
  
  Ubuntu 20.04, RTX 3070 GPU 1개 - 최종 점수 **49.78 (Rank 5)**
 
+<br />
 
 ## 주요 특징
 
@@ -86,7 +87,7 @@
   - test1: downsampling 증강 적용, 클래스 별 가중치 적용, LR + GT-Sampling 조정
   - test2: test1 + 클래스 별 가중치, NMS 임계값, MIN_RADIUS, GRID_SIZE 조정 + translation 증강 추가
   - test3: test1 + LOCAL_AGGREGATION_TYPE, PointCloudRange, VoxelSize 조정
-- score: X (리더보드 제출 X)  
+- **score: X (리더보드 제출 X)**  
 - [MODEL TRAIN (9.22-9.28)](https://cafe.daum.net/SmartRobot/RoVa/2372)
 
 <br />
@@ -101,6 +102,7 @@
 - **PV-RCNN++ (test3, test4)**
   - test3: test1 + LOCAL_AGGREGATION_TYPE, PointCloudRange, VoxelSize 조정
   - test4: test3 + translation 증강 추가 + heatmap 조정 + point head 조정 + voxel size 조정
+- **score: 46.92 (test3)**
 - [MODEL TRAIN (9.29-10.6)](https://cafe.daum.net/SmartRobot/RoVa/2375)
 
 <br />
@@ -112,12 +114,12 @@
 
 
 
-## MODEL TRAIN (9.22-9.28)
-- **PV-RCNN++ (test1, test2, test3)**
-  - test1: downsampling 증강 적용, 클래스 별 가중치 적용, LR + GT-Sampling 조정
-  - test2: test1 + 클래스 별 가중치, NMS 임계값, MIN_RADIUS, GRID_SIZE 조정 + translation 증강 추가
-  - test3: test1 + LOCAL_AGGREGATION_TYPE, PointCloudRange, VoxelSize 조정  
-- [MODEL TRAIN (9.22-9.28)](https://cafe.daum.net/SmartRobot/RoVa/2372)
+## MODEL TRAIN (10.7-10.14)
+- **PV-RCNN++ (test5, test6)**
+  - test5: test4 + 학습률 조정
+  - test6: test5 + Noise 증강 추가 + 학습률 조정
+- **score: 49.03 (test6)**
+- [MODEL TRAIN (10.7-10.14)](https://cafe.daum.net/SmartRobot/RoVa/2380)
 
 <br />
 
@@ -128,9 +130,8 @@
 
 
 
-## MODEL TRAIN (9.22-9.28)
-- **PV-RCNN++ (test1, test2, test3)**
-  - test1: downsampling 증강 적용, 클래스 별 가중치 적용, LR + GT-Sampling 조정
-  - test2: test1 + 클래스 별 가중치, NMS 임계값, MIN_RADIUS, GRID_SIZE 조정 + translation 증강 추가
-  - test3: test1 + LOCAL_AGGREGATION_TYPE, PointCloudRange, VoxelSize 조정  
-- [MODEL TRAIN (9.22-9.28)](https://cafe.daum.net/SmartRobot/RoVa/2372)
+## 마무리 보고서
+- **final score: 49.78 (test5)**  
+- [마무리 보고서](https://cafe.daum.net/SmartRobot/RoVa/2372)
+
+<img width="1244" height="613" alt="image" src="https://github.com/user-attachments/assets/10b4d47c-af14-4369-b163-bf2e5dabef66" />
