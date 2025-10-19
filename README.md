@@ -45,46 +45,59 @@
   - [VoxelNet(CVPR 2017) Review](https://cafe.daum.net/SmartRobot/RoVa/2261)
   - [SECOND(2018) Review](https://cafe.daum.net/SmartRobot/RoVa/2273)
   - [Center-based 3D Object Detection and Tracking](https://kind-slip-86b.notion.site/Center-based-3D-Object-Detection-and-Tracking-2808a2c2bfdb80d2a308c5ea2a45c8f4?source=copy_link)
+  - [3D 후보 모델 논문 증강 확인 및 제안](https://cafe.daum.net/SmartRobot/RoVa/2348)
 
 - **OpenPCDet 프레임워크 공부**
-  - 
+  - [모델 설정 파일 조사](https://cafe.daum.net/SmartRobot/RoVa/2275)
+  - [Voxel-RCNN 훈련 및 추론](https://cafe.daum.net/SmartRobot/RoVa/2282)
+  - [Pretrained model / backbone freeze (pv-rcnn)](https://cafe.daum.net/SmartRobot/RoVa/2284)
+  - [.pkl 정보 활용 및 분석](https://cafe.daum.net/SmartRobot/RoVa/2286)
+  - [데이터 증강 전후 결과 확인 및 추가 (pv-rcnn)](https://cafe.daum.net/SmartRobot/RoVa/2290)
+  - [Custom Dataset](https://cafe.daum.net/SmartRobot/RoVa/2304)
+  - [3D detection 평가 지표](https://cafe.daum.net/SmartRobot/RoVa/2318)
+  - [3D 후보 모델 선정](https://cafe.daum.net/SmartRobot/RoVa/2334)
+  - [DSVT-Pillar .yaml pix & Training](https://cafe.daum.net/SmartRobot/RoVa/2344)
+ 
+ 
 
 ---
 
-## rock_classification_multi_gpu_v1.py
-- **score**: 0.73568  
-- Jetson 기반 Multi-Node 학습, Jetson AGX Orin 4대  
-- resnet101 훈련  
-- [Jetson 기반 Multi-Node 학습](https://cafe.daum.net/SmartRobot/RoVa/2206)
+## 작년 데이터셋을 이용한 모의 테스트 구성
+- 2024 자율주행 AI 챌린지 dataset에서 64ch 데이터셋만 추출하여 검증 진행
+- [작년 데이터셋을 이용한 모의 테스트 + CenterPoint-Pillar](https://cafe.daum.net/SmartRobot/RoVa/2361)
 
 ---
 
-## rock_classification_multi_gpu_v2.py
-- **score**: 0.76311  
-- class weight, augmentation 추가  
-- resnet50 훈련  
-- [class weight, augmentation](https://cafe.daum.net/SmartRobot/RoVa/2216)
+## MODEL TRAIN (9.22-9.28)
+- **PV-RCNN++ (test1, test2, test3)**
+  - test1: downsampling 증강 적용, 클래스 별 가중치 적용, LR + GT-Sampling 조정
+  - test2: test1 + 클래스 별 가중치, NMS 임계값, MIN_RADIUS, GRID_SIZE 조정 + translation 증강 추가
+  - test3: test1 + LOCAL_AGGREGATION_TYPE, PointCloudRange, VoxelSize 조정
+- score: X (리더보드 제출 X)  
+- [MODEL TRAIN (9.22-9.28)](https://cafe.daum.net/SmartRobot/RoVa/2372)
 
 ---
 
-## rock_classification_multi_gpu_v3.py
-- **score**: 0.78917  
-- Two-Stage Fine-Tuning 적용, TTA 적용  
-- resnet50 훈련  
-- [Two-Stage Fine-Tuning](https://cafe.daum.net/SmartRobot/RoVa/2222)
+## MODEL TRAIN (9.29-10.6)
+- **PV-RCNN++ (test3, test4)**
+  - test3: test1 + LOCAL_AGGREGATION_TYPE, PointCloudRange, VoxelSize 조정
+  - test4: test3 + translation 증강 추가 + heatmap 조정 + point head 조정 + voxel size 조정
+- [MODEL TRAIN (9.29-10.6)](https://cafe.daum.net/SmartRobot/RoVa/2375)
 
 ---
 
-## rock_classification_multi_gpu_v4.py
-- **score**: 0.8195  
-- Two-Stage Fine-Tuning 적용  
-- resnet101 훈련  
-- [Two-Stage Fine-Tuning resnet101](https://cafe.daum.net/SmartRobot/RoVa/2227)
+## MODEL TRAIN (9.22-9.28)
+- **PV-RCNN++ (test1, test2, test3)**
+  - test1: downsampling 증강 적용, 클래스 별 가중치 적용, LR + GT-Sampling 조정
+  - test2: test1 + 클래스 별 가중치, NMS 임계값, MIN_RADIUS, GRID_SIZE 조정 + translation 증강 추가
+  - test3: test1 + LOCAL_AGGREGATION_TYPE, PointCloudRange, VoxelSize 조정  
+- [MODEL TRAIN (9.22-9.28)](https://cafe.daum.net/SmartRobot/RoVa/2372)
 
 ---
 
-## rock_classification_multi_gpu_v5.py
-- **score**: 0.84178  
-- TTA 삭제, Window RTX4070 super 환경에서 학습, Two-Stage Fine-Tuning 유지  
-- resnet101 훈련  
-
+## MODEL TRAIN (9.22-9.28)
+- **PV-RCNN++ (test1, test2, test3)**
+  - test1: downsampling 증강 적용, 클래스 별 가중치 적용, LR + GT-Sampling 조정
+  - test2: test1 + 클래스 별 가중치, NMS 임계값, MIN_RADIUS, GRID_SIZE 조정 + translation 증강 추가
+  - test3: test1 + LOCAL_AGGREGATION_TYPE, PointCloudRange, VoxelSize 조정  
+- [MODEL TRAIN (9.22-9.28)](https://cafe.daum.net/SmartRobot/RoVa/2372)
