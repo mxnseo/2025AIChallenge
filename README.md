@@ -36,14 +36,18 @@
 [최적 모델 저장]
   ↓
 [Validation: Waymo L2/mAP] 
-
+```
 
 
 ## 대회 참여 전 공부
 - **논문 공부**
-  - [PointNet (CVPR 2017) Review](https://cafe.daum.net/SmartRobot/RoVa/2256)
+  - [PointNet(CVPR 2017) Review](https://cafe.daum.net/SmartRobot/RoVa/2256)
+  - [VoxelNet(CVPR 2017) Review](https://cafe.daum.net/SmartRobot/RoVa/2261)
+  - [SECOND(2018) Review](https://cafe.daum.net/SmartRobot/RoVa/2273)
+  - [Center-based 3D Object Detection and Tracking](https://kind-slip-86b.notion.site/Center-based-3D-Object-Detection-and-Tracking-2808a2c2bfdb80d2a308c5ea2a45c8f4?source=copy_link)
 
-- [개발환경 구축 및 baseline code](https://cafe.daum.net/SmartRobot/RoVa/2202)
+- **OpenPCDet 프레임워크 공부**
+  - 
 
 ---
 
