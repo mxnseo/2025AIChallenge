@@ -1,62 +1,48 @@
-# 🪨 Rock Type Classification with Multi-GPU DDP Training
-
- **Dacon 자갈 암석 분류 대회**를 위해 진행된 분류 모델 학습 파이프라인
+# Autonomous Driving AI Chanllenge
+ **자율주행 AI 챌린지 대회**를 위해 진행된 검출 모델 학습 파이프라인
  
-Jetson AGX Orin 기반 멀티 노드 분산 학습(DDP) 환경 - 최종 점수 0.84178
+ Ubuntu 20.04, RTX 3070 GPU 1개 - 최종 점수 **49.78 (Rank 5)**
 
-## 🚀 주요 특징
+## 주요 특징
 
 - **모델 아키텍처**
-  - `timm` 라이브러리 기반의 `resnet101` 백본
-  - `conv1 ~ layer2`는 Freeze, `layer3~4`, `fc`만 fine-tuning
+  - [PV-RCNN++](https://arxiv.org/abs/2102.00463)
 
 - **데이터 전처리**
-  - `PadSquare` 클래스를 활용해 정사각형 padding 적용
-  - `Albumentations` 기반 다양한 augmentation
-    - Horizontal/Vertical Flip, ShiftScaleRotate, Blur, CoarseDropout 등
+  - augmentation
+    - EDA 시 64ch, 128ch 혼합 확인, 이후 test dataset은 64ch만 있는 것을 확인하고 downsampling 추가
+    - Flip, Scale, rotation, translation 등
 
 - **학습 기법**
-  - `DistributedDataParallel`을 활용한 **멀티 노드 DDP 학습**
-  - `CrossEntropyLoss`에 `class_weight`와 `label_smoothing` 적용
-  - `GradScaler` + `autocast()` 기반 AMP (mixed precision training)
-  - `ReduceLROnPlateau` 학습률 스케줄러 사용
-  - `LivePlot`을 활용한 실시간 학습 그래프 시각화
+  - `OpenPCDet`을 활용한 **3D Detection Training**
+  - `Tensorboard`을 활용한 실시간 학습 그래프 시각화
 
 - **검증 및 평가**
-  - `macro F1-score` 기반 성능 평가
-  - 클래스 비율을 고려한 Stratified Split
+  - `Waymo L2/mAP` 기반 성능 평가
+  - 2024 dataset의 64ch만 추출하여 val.py 진행 (검증)
 
-- **TTA (Test Time Augmentation)**
-  - 테스트 시 좌우반전 포함한 TTA 적용
-  - 최종 결과를 `.csv` 형식으로 저장
-  - 이후 점수 문제로 삭제
 
-## 🧩 학습 파이프라인
+## 학습 파이프라인
 
 ```text
 [Dataset] 
   ↓
-[Albumentations Augmentation]
+[Augmentation]
   ↓
 [CustomDataset]
   ↓
-[DistributedDataLoader]
+[PV-RCNN++ 모델 학습]
   ↓
-[ResNet101 모델 (conv1~layer2 freeze)]
+[최적 모델 저장]
   ↓
-[AMP + DDP 학습]
-  ↓
-[Validation: macro F1] 
-  ↓
-[최적 모델 저장 및 TTA Inference]
-
-```
+[Validation: Waymo L2/mAP] 
 
 
-## rock_classification_baseline.py
-- **score**: 0.67288  
-- 기존 baseline code 학습, Jetson AGX Orin 1대  
-- mobilenetv3 훈련  
+
+## 대회 참여 전 공부
+- **논문 공부**
+  - [PointNet (CVPR 2017) Review](https://cafe.daum.net/SmartRobot/RoVa/2256)
+
 - [개발환경 구축 및 baseline code](https://cafe.daum.net/SmartRobot/RoVa/2202)
 
 ---
