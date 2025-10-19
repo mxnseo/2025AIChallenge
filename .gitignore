@@ -1,6 +1,0 @@
-.venv/ venv/ __pycache__/ *.pyc .ipynb_checkpoints/
-data/ outputs/ logs/ checkpoints/
-*.pt *.pth *.onnx *.bin *.pkl *.npy *.npz *.h5 *.ckpt
-*.tar *.zip *.7z
-build/ *.so
-*.mp4 *.avi *.mov
