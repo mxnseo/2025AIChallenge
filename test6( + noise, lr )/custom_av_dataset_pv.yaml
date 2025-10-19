@@ -1,0 +1,95 @@
+DATASET: 'CustomAvDataset'
+DATA_PATH: '/mnt/d/data/custom_av'
+# DATA_PATH: '/mnt/d/3d_mod_av_db'
+# 3D_DB가 2024 DATASET임
+
+POINT_CLOUD_RANGE: [-76.8, -76.8, -2, 76.8, 76.8, 4]
+
+MAP_CLASS_TO_KITTI: {
+    'Vehicle': 'Car',
+    'Pedestrian': 'Pedestrian',
+    'Cyclist': 'Cyclist',
+}
+
+DATA_SPLIT: {
+    'train': train,
+    'test': test,
+}
+
+INFO_PATH: {
+    'train': [custom_av_infos_train.pkl],
+    'test': [custom_av_infos_val.pkl],
+}
+
+POINT_FEATURE_ENCODING: {
+    encoding_type: absolute_coordinates_encoding,
+    used_feature_list: ['x', 'y', 'z', 'intensity'],
+    src_feature_list: ['x', 'y', 'z', 'intensity'],
+}
+
+DATA_AUGMENTOR:
+    DISABLE_AUG_LIST: ['placeholder']
+    AUG_CONFIG_LIST:
+        - NAME: random_downsample
+          # 22만 이상은 128ch로 확신하고 100% 다운샘플링
+          UPPER_THRESHOLD: 220000
+          # 15만 이하는 64ch로 확신하고 절대 다운샘플링 안 함
+          LOWER_THRESHOLD: 150000
+          # 애매한 구간(15만~22만)에서 다운샘플링을 시도할 확률.
+          # 이 구간은 128ch의 희소한 데이터일 가능성이 64ch의 조밀한 데이터일 가능성보다 높으니까 높게 설정
+          PROBABILITY: 0.75
+          METHOD: zbin
+          TARGET_CHANNELS: 64
+          ASSUMED_BASE_CHANNELS: 128
+
+        - NAME: gt_sampling
+          USE_ROAD_PLANE: False
+          DB_INFO_PATH:
+              - custom_av_dbinfos_train.pkl
+          PREPARE: {
+             filter_by_min_points: ['Vehicle:5', 'Pedestrian:5', 'Cyclist:5'],
+          }
+
+          # SAMPLE_GROUPS: ['Vehicle:15', 'Pedestrian:10', 'Cyclist:10']
+          SAMPLE_GROUPS: ['Vehicle:10', 'Pedestrian:15', 'Cyclist:10']
+          NUM_POINT_FEATURES: 4
+          DATABASE_WITH_FAKELIDAR: False
+          REMOVE_EXTRA_WIDTH: [0.0, 0.0, 0.0]
+          LIMIT_WHOLE_SCENE: True
+
+        - NAME: add_random_noise
+          NOISE_TYPE: 'circular'      # 'rectangular' 또는 'circular' 중 선택
+          RADIUS: 60.0                # 노이즈를 추가할 반경 (미터)
+          Z_RANGE: [-2, 4]            # 노이즈를 추가할 높이 범위
+          NUM_NOISE_POINTS: 1000      # 추가할 노이즈 포인트의 개수
+
+        - NAME: random_world_flip
+          ALONG_AXIS_LIST: ['x', 'y']
+
+        - NAME: random_world_rotation
+          WORLD_ROT_ANGLE: [-0.78539816, 0.78539816]
+
+        - NAME: random_world_scaling
+          WORLD_SCALE_RANGE: [0.95, 1.05]
+        
+        - NAME: random_world_translation # 추가
+          NOISE_TRANSLATE_STD: [0.2, 0.2, 0.2]
+        
+
+DATA_PROCESSOR:
+    - NAME: mask_points_and_boxes_outside_range
+      REMOVE_OUTSIDE_BOXES: True
+
+    - NAME: shuffle_points
+      SHUFFLE_ENABLED: {
+        'train': True,
+        'test': True
+      }
+
+    - NAME: transform_points_to_voxels
+      VOXEL_SIZE: [0.075, 0.075, 0.15] # 0.1, 0.1, 0.15 # 1.7배 복셀 수가 증가
+      MAX_POINTS_PER_VOXEL: 5
+      MAX_NUMBER_OF_VOXELS: {
+        'train': 250000, # 150000
+        'test': 250000
+      }
