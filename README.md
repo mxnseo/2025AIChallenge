@@ -90,6 +90,9 @@
 - score: X (리더보드 제출 X)  
 - [MODEL TRAIN (9.22-9.28)](https://cafe.daum.net/SmartRobot/RoVa/2372)
 
+<br />
+
+
 ---
 
 <br />
@@ -100,6 +103,9 @@
   - test3: test1 + LOCAL_AGGREGATION_TYPE, PointCloudRange, VoxelSize 조정
   - test4: test3 + translation 증강 추가 + heatmap 조정 + point head 조정 + voxel size 조정
 - [MODEL TRAIN (9.29-10.6)](https://cafe.daum.net/SmartRobot/RoVa/2375)
+
+<br />
+
 
 ---
 
@@ -113,6 +119,9 @@
   - test2: test1 + 클래스 별 가중치, NMS 임계값, MIN_RADIUS, GRID_SIZE 조정 + translation 증강 추가
   - test3: test1 + LOCAL_AGGREGATION_TYPE, PointCloudRange, VoxelSize 조정  
 - [MODEL TRAIN (9.22-9.28)](https://cafe.daum.net/SmartRobot/RoVa/2372)
+
+<br />
+
 
 ---
 
