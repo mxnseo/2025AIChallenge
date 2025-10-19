@@ -20,12 +20,7 @@ FRAME_LIST_FILE = os.path.join(DATA_PATH, "ImageSets", "test.txt")
 POINTS_FOLDER   = os.path.join(DATA_PATH, "points")
 RESULT_PKL      = "./tools/result.pkl"     # 예측 결과(pkl)
 # 클래스별 점수 임계값 (딕셔너리 형태로 정의)
-SCORE_THR = {
-    'Vehicle': 0.3,
-    'Pedestrian': 0.25,
-    'Cyclist': 0.25,
-    '__default__': 0.1  # 혹시 모를 다른 클래스를 위한 기본값
-}
+SCORE_THR =  0.14
 NMS_IOU_THR     = 0.10                          
 VIEW_FILE       = os.path.join(DATA_PATH, "view.json")
 
