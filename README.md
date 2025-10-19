@@ -54,9 +54,8 @@
   - [SECOND(2018) Review](https://cafe.daum.net/SmartRobot/RoVa/2273)
   - [Center-based 3D Object Detection and Tracking](https://kind-slip-86b.notion.site/Center-based-3D-Object-Detection-and-Tracking-2808a2c2bfdb80d2a308c5ea2a45c8f4?source=copy_link)
   - [3D 후보 모델 논문 증강 확인 및 제안](https://cafe.daum.net/SmartRobot/RoVa/2348)
+ 
 
-
-<br />
 - **OpenPCDet 프레임워크 공부**
   - [모델 설정 파일 조사](https://cafe.daum.net/SmartRobot/RoVa/2275)
   - [Voxel-RCNN 훈련 및 추론](https://cafe.daum.net/SmartRobot/RoVa/2282)
@@ -70,9 +69,7 @@
 
 
  
- <br />
-
-
+<br />
 
 ---
 
@@ -81,8 +78,6 @@
 - [작년 데이터셋을 이용한 모의 테스트 + CenterPoint-Pillar](https://cafe.daum.net/SmartRobot/RoVa/2361)
 
 ---
-
-
 
 <br />
 
@@ -97,8 +92,6 @@
 
 ---
 
-
-
 <br />
 
 
@@ -109,8 +102,6 @@
 - [MODEL TRAIN (9.29-10.6)](https://cafe.daum.net/SmartRobot/RoVa/2375)
 
 ---
-
-
 
 <br />
 
@@ -124,8 +115,6 @@
 - [MODEL TRAIN (9.22-9.28)](https://cafe.daum.net/SmartRobot/RoVa/2372)
 
 ---
-
-
 
 <br />
 
